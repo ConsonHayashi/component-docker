@@ -1,0 +1,76 @@
+server-ip: docker.for.mac.host.internal
+server-port: 8000
+database-url: ${server-ip}:3308
+database-name: flina
+database-user: root
+database-pass: rootroot
+database-timezone: Asia/Shanghai
+
+
+jwt:
+  header: "Authorization" #token返回头部
+  tokenPrefix: "Bearer " #token前缀
+  secret: "qwertyuiop7418520" #密钥
+  expireTime: 600 #token有效时间 (分钟) 建议一小时以上
+
+logging:
+  level:
+    root: info
+
+swagger:
+  title: "Flina Auth Server API Document"
+  description: "API for call by any end"
+  author: "Pedro"
+  contact: "dongqinglin19991112@gmail.com"
+  site: "www.dongqinglin.cn"
+  baseUrl: "/api"
+  basePackage: "me.dongqinglin.flina.auth"
+  version: "1.0"
+
+server:
+  port: ${server-port}
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  mail:
+    host: smtp.gmail.com
+    username: dongqinglin19991112@gmail.com
+    password: 'There is 3 day!!!'
+    protocol: smtp
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 465
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true
+    from: Pedro
+    default-encoding: utf-8
+  datasource:
+    url: jdbc:mysql://${database-url}/${database-name}?serverTimezone=${database-timezone}&useUnicode=true&characterEncoding=UTF-8
+    username: ${database-user}
+    password: ${database-pass}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: ${database-timezone}
+  jpa:
+    database: MYSQL
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: me.dongqinglin.flina.schema.middleware.mysql.MySQLConfig
+    hibernate:
+      ddl-auto: update
+  redis:
+    database: 0
+    host: ${server-ip}
+    port: 6379
+    password:
+    lecttuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+      shutdown-timeout: 200ms

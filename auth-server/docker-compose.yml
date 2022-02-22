@@ -1,0 +1,10 @@
+version: '3'
+services:
+  flina-auth-server:
+    build: ./  #Specify the directory where the Dockerfile is located
+    image: dql19991112/flina-auth-server:1.0.0
+    container_name: flina-auth-server
+    volumes:
+      - ./application.yml:/app/application.yml
+    ports:
+      - "8000:8000"

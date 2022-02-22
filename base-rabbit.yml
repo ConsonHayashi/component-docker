@@ -1,0 +1,11 @@
+version: "3"
+services: 
+  base-ubuntu-rabbit:
+    container_name: "base-ubuntu-rabbit"
+    image: "dql19991112/base-ubuntu-rabbitmq:1.3"
+    ports:
+      - "15672:15672"
+    tty: true
+    restart: "always"
+    privileged: true
+    command: /usr/bin/systemd

@@ -1,0 +1,11 @@
+version: "3"
+services: 
+  base-ubuntu-mysql:
+    container_name: "base-ubuntu-mysql"
+    image: "dql19991112/base-ubuntu-mysql:1.1"
+    ports:
+      - "3308:3308"
+    tty: true
+    restart: "always"
+    privileged: true
+    command: /usr/bin/systemd

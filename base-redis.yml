@@ -1,0 +1,11 @@
+version: "3"
+services: 
+  base-centos-redis:
+    container_name: "base-centos-redis"
+    image: "dql19991112/base-centos-redis:1.1"
+    tty: true
+    restart: "always"
+    ports:
+      - "6379:6379"
+    command: /usr/sbin/init
+    privileged: true

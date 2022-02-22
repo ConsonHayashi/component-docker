@@ -1,0 +1,20 @@
+version: "3"
+services: 
+  base-ubuntu:
+    container_name: "base-ubuntu"
+    image: "dql19991112/base-ubuntu:1.4"
+    network_mode: "host"
+    tty: true
+    restart: "always"
+    privileged: true
+    command: /usr/bin/systemd
+  base-centos:
+    container_name: "base-centos"
+    image: "dql19991112/base-centos:1.1"
+    tty: true
+    restart: "always"
+    network_mode: "host"
+    command: /usr/sbin/init
+    privileged: true
+
+

@@ -1,0 +1,10 @@
+version: "3"
+services: 
+  base-ubuntu-apache:
+    container_name: "base-ubuntu-apache"
+    image: "dql19991112/base-ubuntu-apache:1.1"
+    network_mode: "host"
+    tty: true
+    restart: "always"
+    privileged: true
+    command: /usr/bin/systemd

@@ -1,0 +1,11 @@
+version: "3"
+services: 
+  base-ubuntu-maven:
+    container_name: "base-ubuntu-maven"
+    image: "dql19991112/base-ubuntu-maven:1.4"
+    ports:
+      - "8081:8081"
+    tty: true
+    restart: "always"
+    privileged: true
+    # command: /usr/bin/systemd
