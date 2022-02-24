@@ -5,5 +5,4 @@ services:
     container_name: flina-rest-server
     volumes:
       - ./application.yml:/app/application.yml
-    ports:
-      - "10000:10000"
+    network_mode: "host"

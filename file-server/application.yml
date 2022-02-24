@@ -1,14 +1,16 @@
-database-url: localhost:3306
-#database-url: docker.for.mac.host.internal
-database-name: flina
-database-user: root
-database-pass: rootroot
-database-timezone: Asia/Shanghai
+server-ip: localhost
 server-port: 9000
+static-root: /root/file
 server-name: /file
 server-version: "1.0.1"
 server-description: "v1 path change"
-static-root: /root/file
+
+database-url: ${server-ip}:3306
+database-name: test
+database-user: root
+database-pass: rootroot
+database-timezone: Asia/Shanghai
+
 
 jwt:
   header: "Authorization" #token返回头部
@@ -70,7 +72,7 @@ spring:
     time-zone: ${database-timezone}
   redis:
     database: 0
-    host: 127.0.0.1
+    host: ${server-ip}
     port: 6379
     password:
     lecttuce:

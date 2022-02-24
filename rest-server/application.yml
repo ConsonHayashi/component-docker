@@ -1,13 +1,14 @@
-database-url: localhost:3306
-#database-url: docker.for.mac.host.internal
-database-name: flina
+server-ip: localhost
+server-port: 10000
+server-name: /rest
+server-version: "1.0.1"
+server-description: "API for call by any end"
+
+database-url: ${server-ip}:3306
+database-name: test
 database-user: root
 database-pass: rootroot
 database-timezone: Asia/Shanghai
-server-name: /rest
-server-port: 10000
-server-version: "1.0.1"
-server-description: "API for call by any end"
 
 
 jwt:
@@ -37,7 +38,6 @@ server:
 
 
 spring:
-
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
@@ -67,7 +67,7 @@ spring:
     time-zone: ${database-timezone}
   redis:
     database: 0
-    host: 127.0.0.1
+    host: ${server-ip}
     port: 6379
     password:
     lecttuce:
