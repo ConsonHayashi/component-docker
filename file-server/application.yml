@@ -1,11 +1,14 @@
-server-ip: docker.for.mac.host.internal
-server-port: 9000
-static-root: /root/file
-database-url: ${server-ip}:3308
+database-url: localhost:3306
+#database-url: docker.for.mac.host.internal
 database-name: flina
 database-user: root
 database-pass: rootroot
 database-timezone: Asia/Shanghai
+server-port: 9000
+server-name: /file
+server-version: "1.0.1"
+server-description: "v1 path change"
+static-root: /root/file
 
 jwt:
   header: "Authorization" #token返回头部
@@ -19,16 +22,18 @@ logging:
 
 swagger:
   title: "Flina File Server API Document"
-  description: "API for call by any end"
+  description: ${server-description}
   author: "Pedro"
   contact: "dongqinglin19991112@gmail.com"
   site: "www.dongqinglin.cn"
   baseUrl: "/api"
   basePackage: "me.dongqinglin.flina.file"
-  version: "1.0"
+  version: ${server-version}
 
 server:
   port: ${server-port}
+  servlet:
+    context-path: ${server-name}
 
 spring:
   servlet:
@@ -52,24 +57,20 @@ spring:
     from: Pedro
     default-encoding: utf-8
   datasource:
-    url: jdbc:mysql://${database-url}/${database-name}?serverTimezone=${database-timezone}&useUnicode=true&characterEncoding=UTF-8
-    username: ${database-user}
-    password: ${database-pass}
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    v1:
+      url: jdbc:mysql://${database-url}/${database-name}?serverTimezone=${database-timezone}&useUnicode=true&characterEncoding=UTF-8
+      username: ${database-user}
+      password: ${database-pass}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      maximum-pool-size: 1
+      show-sql: true
+      ddl-auto: update
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: ${database-timezone}
-  jpa:
-    database: MYSQL
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: me.dongqinglin.flina.schema.middleware.mysql.MySQLConfig
-    hibernate:
-      ddl-auto: update
   redis:
     database: 0
-    host: ${server-ip}
+    host: 127.0.0.1
     port: 6379
     password:
     lecttuce:

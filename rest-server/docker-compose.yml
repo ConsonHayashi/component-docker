@@ -1,7 +1,6 @@
 version: '3'
 services:
   flina-rest-server:
-    build: ./  #Specify the directory where the Dockerfile is located
     image: dql19991112/flina-rest-server:1.0.0
     container_name: flina-rest-server
     volumes:
