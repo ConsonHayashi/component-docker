@@ -1,7 +1,7 @@
-server-ip: docker.for.mac.host.internal
+server-ip: localhost
 server-port: 8000
-database-url: ${server-ip}:3308
-database-name: flina
+database-url: ${server-ip}:3306
+database-name: test
 database-user: root
 database-pass: rootroot
 database-timezone: Asia/Shanghai

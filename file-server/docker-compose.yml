@@ -1,10 +1,9 @@
 version: '2'
 services:
   flina-file-server:
-    build: ./  #Specify the directory where the Dockerfile is located
+          #    build: ./  #Specify the directory where the Dockerfile is located
     image: dql19991112/flina-file-server:1.0.0
     container_name: flina-file-server
     volumes:
       - ./application.yml:/app/application.yml
-    ports:
-      - "9000:9000"
+    network_mode: "host"
